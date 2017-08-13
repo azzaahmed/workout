@@ -9,6 +9,7 @@ class User < ApplicationRecord
 validates :first_name, presence: true
    validates :last_name, presence: true
    
+after_create :create_chatroom #after create call-back  room should be created after sign up successfully and user created
 
   has_many :friendships
   # as we do not have a friend model we would use the user model by giving the :friend a class_name "user" so we are aliasing :friend
@@ -46,4 +47,12 @@ validates :first_name, presence: true
    def current_friendship(friend)
     friendships.where(friend: friend).first
    end
+
+
+     private
+  
+  def create_chatroom
+    hyphenated_username = self.full_name.split.join('-')
+    Room.create(name: hyphenated_username, user_id: self.id)
+  end
 end
