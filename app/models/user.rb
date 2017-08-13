@@ -14,7 +14,8 @@ after_create :create_chatroom #after create call-back  room should be created af
   has_many :friendships
   # as we do not have a friend model we would use the user model by giving the :friend a class_name "user" so we are aliasing :friend
   has_many :friends, through: :friendships, class_name: "User"
-
+has_one :room
+  has_many :messages
     self.per_page = 10
 
 
