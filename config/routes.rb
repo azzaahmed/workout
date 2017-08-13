@@ -15,4 +15,6 @@ devise_for :users, :controllers => { registrations: 'registrations' }
     end
   end
   
+
+  resources :friendships, only: [:show, :create, :destroy]
 end

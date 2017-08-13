@@ -9,6 +9,11 @@ class User < ApplicationRecord
 validates :first_name, presence: true
    validates :last_name, presence: true
    
+
+  has_many :friendships
+  # as we do not have a friend model we would use the user model by giving the :friend a class_name "user" so we are aliasing :friend
+  has_many :friends, through: :friendships, class_name: "User"
+
     self.per_page = 10
 
 
@@ -29,6 +34,13 @@ validates :first_name, presence: true
         "%#{names_array[1]}%", "%#{names_array[0]}%",
         "%#{names_array[1]}%").order(:first_name)
     end
+  end
+
+# friendships.map(&:friend)   get all the friedships and select friend so we get all the current user friends
+# .include?(new_friend)  check if the new friend we are passong already included in the returned list of the map
+  # self == new_friend check if the current user is this new friend
+  def follows_or_same?(new_friend)
+    friendships.map(&:friend).include?(new_friend) || self == new_friend
   end
   
 end
