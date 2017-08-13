@@ -17,7 +17,6 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "link", root_path %></li>
         <li>  <%= link_to " Athletes Den ", root_path %></li>
            
             <%= form_tag(search_dashboards_path,
@@ -61,7 +60,7 @@
 </header>
 
 <!-- flash messages -->
- <div class="container"> 
+<div class="<%= content_for?(:whole_page) ? 'container-fluid' :  'container' %>">
 <div class="row">
 <div class="col-md-12">
 <% flash.each do |key, message| %>
@@ -69,7 +68,7 @@
 <%= message %> 
 </div>
 <% end %>
-<%= yield %> 
+ <%= yield :whole_page %>
 </div>
 </div> 
 </div>
