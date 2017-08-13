@@ -68,6 +68,9 @@
 <%= message %> 
 </div>
 <% end %>
+<!-- if there is no whole page in the view -->
+<%=yield%> 
+<!-- if the view contain whole page -->
  <%= yield :whole_page %>
 </div>
 </div> 
