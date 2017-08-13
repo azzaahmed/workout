@@ -43,4 +43,7 @@ validates :first_name, presence: true
     friendships.map(&:friend).include?(new_friend) || self == new_friend
   end
   
+   def current_friendship(friend)
+    friendships.where(friend: friend).first
+   end
 end
