@@ -18,4 +18,7 @@ devise_for :users, :controllers => { registrations: 'registrations' }
 
   resources :friendships, only: [:show, :create, :destroy]
   resources :messages, only: [:create]
+
+# connect the app to action cable server
+  mount ActionCable.server => '/cable'
 end
