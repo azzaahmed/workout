@@ -2,6 +2,7 @@
 App.messages = App.cable.subscriptions.create "MessagesChannel",
   connected: ->
     # Called when the subscription is ready for use on the server
+    #connect lama bad5ol fel lounge
     #taken from exercise/index.html
     roomId = $("#chat-box").data("room-id")
     #checkIn method below

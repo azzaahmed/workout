@@ -8,6 +8,7 @@ class MessagesChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
+#called in messages.coffee
     def checkIn(data)
     room_id = "#{data['room_id']}"
     stream_from "messages_room_#{room_id}"  #create the channel 
